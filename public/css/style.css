@@ -1,0 +1,323 @@
+body {
+    background-color: #232323;
+    color: #f0f0f0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: #f0f0f0;
+}
+
+button {
+    border-color: #f0f0f0;
+    border-radius: 25px;
+    background-color: #444;
+    color: #f0f0f0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.body-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+.landing-page-container {
+    margin-top: 25px;
+    border-radius: 25px;
+    background-color: #444;
+    width: 600px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-banner {
+    margin-top: 50px;
+    margin-bottom: 75px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.landing-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.landing-button {
+    margin-bottom: 50px;
+    border-radius: 50px;
+    width: 300px;
+    height: 75px;
+    font-size: 32px;
+    background-color: #555;
+    color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.landing-button:hover {
+    background-color: #666;
+}
+
+.login-signup-banner {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.login-signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-signup-field {
+    margin-bottom: 25px;
+}
+
+.login-signup-btn {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    min-width: 300px;
+    min-height: 50px;
+    font-size: 18px;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #555;
+    color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-signup-btn:hover {
+    background-color: #666;
+}
+
+.login-container, .signup-container, .home-container, .room-container {
+    margin-top: 25px;
+    border-radius: 25px;
+    background-color: #444;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.home-container {
+    min-height: 550px;
+}
+
+.room-container {
+    width: 700px;
+    min-height: 550px;
+}
+
+.home-title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.create_new_room_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-btn, .option-btn, .room-btn {
+    margin-top: 25px;
+    min-width: 50px;
+    min-height: 25px;
+    font-size: 14px;
+    background-color: #555;
+    color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.home-btn:hover, .option-btn:hover, .room-btn:hover {
+    background-color: #666;
+}
+
+.room {
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+
+.spacer {
+    margin-bottom: 75px;
+}
+
+.description {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.msg-search {
+    margin-bottom: 10px;
+}
+
+.message-search-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message-display {
+    background-color: #282828;
+    border-radius: 10px;
+    color: #f0f0f0;
+    width: 600px;
+    margin-top: 10px;
+    max-height: 600px;
+    min-height: 200px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.main-message-content {
+    background-color: #282828;
+    border-radius: 10px;
+    color: #f0f0f0;
+    width: 600px;
+    margin-top: 50px;
+    padding: 10px;
+}
+
+.message-entry {
+    background-color: #333;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: right;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.message-entry-field {
+    margin-right: 5px;
+    background-color: #444;
+    color: #f0f0f0;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #555;
+}
+
+.small-spacer {
+    margin-bottom: 10px;
+}
+
+.other-msg, .user-msg {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    max-width: 280px;
+    padding: 10px;
+}
+
+.other-msg {
+    margin-right: 200px;
+    background-color: #6b6b6b;
+}
+
+.user-msg {
+    margin-left: 200px;
+    background-color: #4c8ef5;
+}
+
+.edit-btn {
+    background-color: #90ee90;
+    color: #232323;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 130px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-btn:hover {
+    background-color: #77dd77;
+}
+
+.delete-btn {
+    background-color: #f08080;
+    color: #232323;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #ff6961;
+}
+
+.usr-message-content, .other-message-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.usr-heading, .other-heading {
+    display: flex;
+    flex-direction: row;
+}
+
+.usr-nick-name, .other-nick-name {
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 18px;
+    text-decoration: underline;
+    min-width: 100px;
+    max-width: 100px;
+    text-align: left;
+}
+
+.usr-date, .other-date, .usr-time, .other-time {
+    margin-left: 5px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: white;
+}
+
+.usr-msg, .other-msg {
+    margin: 10px;
+    text-align: left;
+}
+
+.no-msg-found {
+    margin-top: 40px;
+}

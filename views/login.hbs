@@ -1,0 +1,50 @@
+<div class="login-container">
+    <div class="login-signup-banner">Login</div>
+    <form class="login-signup-form" onsubmit="Login_Submit(event)">
+        <div class="login-signup-field">
+            <label for="email">Email:</label>
+            <input type="email" id="email_login" name="email" required>
+        </div>
+        <div class="login-signup-field">
+            <label for="password">Password:</label>
+            <input type="password" id="password_login" name="password" required>
+        </div>
+        <button class="login-signup-btn" type="submit">Login</button>
+    </form>
+    <button class="login-signup-btn" onclick="returnLanding()">Return to Landing Page</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.6/purify.min.js"></script>
+<script>
+    async function Login_Submit(event) {
+        event.preventDefault();
+
+        let email = document.getElementById('email_login').value;
+        email = DOMPurify.sanitize(email, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
+        let password = document.getElementById('password_login').value;
+        password = DOMPurify.sanitize(password, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
+        try {
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            const result = await response.json();
+
+            if (response.status === 200) {
+                window.location.href = '/home';
+            } else {
+                alert(result.message);
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+            alert('An error occurred. Please try again.');
+        }
+    }
+
+    function returnLanding() {
+        window.location.href = '/';
+    }
+</script>

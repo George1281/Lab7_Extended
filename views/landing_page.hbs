@@ -1,0 +1,71 @@
+    <script type="module">
+        // Firebase SDK scripts
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAFS5E8FSnIhOdZUlIJLUPZaTAbwA_AcQg",
+            authDomain: "lab7-e42fd.firebaseapp.com",
+            projectId: "lab7-e42fd",
+            storageBucket: "lab7-e42fd.appspot.com",
+            messagingSenderId: "572276240380",
+            appId: "1:572276240380:web:5709bc8697e59e16f28c79",
+            measurementId: "G-ZHKM3DKNPZ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const auth = getAuth(app);
+            const googleButton = document.getElementById('google-sign-in');
+
+            googleButton.addEventListener('click', async () => {
+                const provider = new GoogleAuthProvider();
+                provider.setCustomParameters({ prompt: "select_account" });
+                try {
+                    const result = await signInWithPopup(auth, provider);
+                    const user = result.user;
+                    const userEmail = user.email;
+                    const userName = user.displayName;
+
+                    const response = await fetch('/google-signin', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email: userEmail, name: userName })
+                    });
+
+                    if (response.status === 200) {
+                        window.location.href = '/home';
+                    } else {
+                        const result = await response.json();
+                        alert(result.message);
+                    }
+                } catch (error) {
+                    console.error('Error during sign-in:', error);
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+    </script>
+<div class="landing-page-container">
+
+    <div class ="welcome-banner">
+        Welcome! Start Chatting!
+    </div>
+    <div class="landing-buttons">
+    <button class="landing-button" onClick="direct_to_login()">Login</button>
+    <button class="landing-button" onClick="direct_to_signup()">Sign Up</button>
+    <button style = " margin-top:0px; margin-bottom: 50px; border-radius: 50px; width: 200px; height: 75px; font-size: 32px;" class="login-signup-btn" id="google-sign-in">Sign in with Google</button>
+    </div>  
+</div>
+<script>
+function direct_to_login(){
+    window.location.href = '/login';
+}
+function direct_to_signup(){
+    window.location.href = '/signup';
+}
+</script>
