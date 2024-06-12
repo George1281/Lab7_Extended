@@ -1,6 +1,6 @@
 <div class="room-container">
-<div class="options">
-<button class = "option-btn" onclick="returnhome()">Return To Room List</button>
+<div class="room-options">
+<button class = "option-btn" onclick="returnhome()">Back</button>
 <button class = "option-btn" onclick="signOut(event)">Sign Out</button>
 </div>
 <div class="description">
@@ -11,43 +11,43 @@
     The room id is {{roomID}}
 </p>
 </div>
-<div class="message-search-options">
+<div class="room-search-options">
     <form class="msg-search" id="message-search" onsubmit="find_message(event)">
-        <label>Search messages here</label>
-        <input type="text" name="message" id="message-search-box" required>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <label></label>
+        <input type="text" name="message" placeholder="Search Messages" id="message-search-box" required>
+        <button type="submit" class="btn btn-primary">&#x1F50D;</button>
     </form>
     <form class="msg-search" id="message-search-date" onsubmit="find_message_by_date(event)">
-        <label>Search messages here by date</label>
+        <label>Search by date: </label>
         <input type="date" name="message" id="message-search-date-box" required>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">&#x1F50D;</button>
     </form>
     <button id = "message-search-clear" onclick="clear_message_search_results()" style="display:none">Clear Search Results</button>
 </div>
 <div class="message-display" id="message-display-results"style="display:none">
     <ul id="messages-search-results"></ul>
 </div>
-<div class="main-message-content">
-    <div class="message-display">
-        <ul id="messages-list"></ul>
-    </div>
-
-    <div class="message-entry">
-        <div class="small-spacer"></div>
-        <div class="message-entry-field">
-            <form id="messageForm" onsubmit="post_new_message(event, '{{roomName}}', '{{roomID}}')">
-                <input type="text" name="message" id="message" required>
-                <button type="submit" class="btn btn-primary">Enter</button>
-            </form>
+    <div class="main-message-content">
+        <div class="message-display">
+            <ul id="messages-list"></ul>
         </div>
-        <div class="small-spacer"></div>
+
+        <div class="message-entry">
+            <div class="small-spacer"></div>
+            <div class="message-entry-field">
+                <form id="messageForm" onsubmit="post_new_message(event, '{{roomName}}', '{{roomID}}')">
+                    <input type="text" name="message" id="message" placeholder="Message {{roomName}}"  required>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+            <div class="small-spacer"></div>
+        </div>
     </div>
-</div>
 <div class="spacer"></div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.6/purify.min.js"></script>
 <script src="/util/roomIdGenerator.js"></script>
-<script>   
+<script>
  let CurrentUserNickname = '{{userName}}';
 
  async function post_new_message(event, roomName, roomID) {
@@ -69,7 +69,7 @@
             method: 'POST'
         });
 
-        document.getElementById('message').value = ''; 
+        document.getElementById('message').value = '';
         fetchMessages(roomName, roomID);
     } catch (error) {
         console.log("Error posting message:", error);
@@ -94,26 +94,26 @@
         li.id = message.messageID;
 
         if (message.email === '{{userEmail}}') {
-            li.innerHTML = `<div class = "usr-message-content"> 
-                                <div class= "usr-heading"> 
-                                    <div class="usr-nick-name">${message.nickname}</div> 
-                                    <div class= "usr-date">${message.date}</div>  
-                                    <div class = "usr-time">${message.time}</div> 
-                                </div> 
+            li.innerHTML = `<div class = "usr-message-content">
+                                <div class= "usr-heading">
+                                    <div class="usr-nick-name">${message.nickname}</div>
+                                    <div class= "usr-date">${message.date}</div>
+                                    <div class = "usr-time">${message.time}</div>
+                                </div>
                                 <div class = "usr-msg">${message.body}</div>
-                            </div> 
-                            <button class = "edit-btn"onclick="editMessage('${message.messageID}', '${message.body}')">Edit</button>  
+                            </div>
+                            <button class = "edit-btn"onclick="editMessage('${message.messageID}', '${message.body}')">Edit</button>
                             <button  class = "delete-btn" onclick="deleteMessage('${message.messageID}')">Delete</button>`;
             li.className = 'user-msg';
         }
         else{
 
-            li.innerHTML = `<div class = "other-message-content"> 
-                                <div class= "other-heading"> 
-                                    <div class="other-nick-name">${message.nickname}</div> 
-                                    <div class= "other-date">${message.date}</div>  
-                                    <div class = "other-time">${message.time}</div> 
-                                </div>  
+            li.innerHTML = `<div class = "other-message-content">
+                                <div class= "other-heading">
+                                    <div class="other-nick-name">${message.nickname}</div>
+                                    <div class= "other-date">${message.date}</div>
+                                    <div class = "other-time">${message.time}</div>
+                                </div>
                                 <div class = "other-msg">${message.body}</div>
                             </div> `;
             li.className = 'other-msg'
@@ -155,7 +155,7 @@
         console.error('Error deleting message:', error);
     }
  }
- 
+
  async function find_message_by_date(event) {
     event.preventDefault();
 
@@ -182,24 +182,24 @@
                 li.id = message.messageID;
 
                 if (message.email === '{{userEmail}}') {
-                    li.innerHTML = `<div class="usr-message-content"> 
-                                        <div class="usr-heading"> 
-                                            <div class="usr-nick-name">${message.nickname}</div> 
-                                            <div class="usr-date">${message.date}</div>  
-                                            <div class="usr-time">${message.time}</div> 
-                                        </div> 
+                    li.innerHTML = `<div class="usr-message-content">
+                                        <div class="usr-heading">
+                                            <div class="usr-nick-name">${message.nickname}</div>
+                                            <div class="usr-date">${message.date}</div>
+                                            <div class="usr-time">${message.time}</div>
+                                        </div>
                                         <div class="usr-msg">${message.body}</div>
-                                    </div> 
-                                    <button class="edit-btn" onclick="editMessage('${message.messageID}', '${message.body}')">Edit</button>  
+                                    </div>
+                                    <button class="edit-btn" onclick="editMessage('${message.messageID}', '${message.body}')">Edit</button>
                                     <button class="delete-btn" onclick="deleteMessage('${message.messageID}')">Delete</button>`;
                     li.className = 'user-msg';
                 } else {
-                    li.innerHTML = `<div class="other-message-content"> 
-                                        <div class="other-heading"> 
-                                            <div class="other-nick-name">${message.nickname}</div> 
-                                            <div class="other-date">${message.date}</div>  
-                                            <div class="other-time">${message.time}</div> 
-                                        </div>  
+                    li.innerHTML = `<div class="other-message-content">
+                                        <div class="other-heading">
+                                            <div class="other-nick-name">${message.nickname}</div>
+                                            <div class="other-date">${message.date}</div>
+                                            <div class="other-time">${message.time}</div>
+                                        </div>
                                         <div class="other-msg">${message.body}</div>
                                     </div>`;
                     li.className = 'other-msg';
